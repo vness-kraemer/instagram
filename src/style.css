@@ -1,0 +1,112 @@
+body {
+    margin: 0;
+    background-color: black;
+    color: white;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.wrapper {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: left;
+    padding: 50px 20px;
+    height: 100vh;
+}
+
+.logo img {
+    width: 200px;
+}
+
+.menu-bar {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    padding: 20px;
+
+}
+
+.menu {
+    display: flex;
+    flex-direction: row;
+    align-items: left;
+    /* justify-content: space-around; */
+    cursor: pointer;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.menu:hover {
+    background-color: grey;
+}
+
+.icon-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0px;
+}
+
+.icon {
+    width: 30px;
+    margin-right: 10px;
+}
+
+.profile-picture {
+    border-radius: 30px;
+}
+
+.text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+}
+
+.main-content {
+    padding: 50px;
+}
+
+.left-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+}
+
+.content p {
+    padding-right: 10px;
+}
+
+.headline {
+    display: flex;
+    flex-direction: row;
+}
+
+.follow {
+    color: grey;
+}
+
+.divider {
+    width: 100%;
+}
+
+.stories {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5em;
+}
+
+.story-picture {
+    width: 50px !important;
+}
