@@ -19,6 +19,7 @@ body {
     align-items: left;
     padding: 50px 20px;
     height: 100vh;
+    border-right: 0.5px solid rgba(255, 255, 255, 0.1);
 }
 
 .logo img {
@@ -29,7 +30,7 @@ body {
     display: flex;
     flex-direction: column;
     width: 300px;
-    padding: 20px;
+    padding: 20px 0px;
 
 }
 
@@ -37,10 +38,9 @@ body {
     display: flex;
     flex-direction: row;
     align-items: left;
-    /* justify-content: space-around; */
     cursor: pointer;
     border-radius: 10px;
-    padding: 5px;
+    padding: 3px;
 }
 
 .menu:hover {
@@ -63,6 +63,16 @@ body {
     border-radius: 30px;
 }
 
+.profile-imgs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30px;
+    padding: 2px;
+    margin-right: 10px;
+    background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
+}
+
 .text {
     display: flex;
     justify-content: center;
@@ -71,7 +81,12 @@ body {
 }
 
 .main-content {
+    display: flex;
+    flex-direction: row;
     padding: 50px;
+    gap: 10em;
+    width: 100%;
+    justify-content: space-around;
 }
 
 .left-content {
@@ -93,20 +108,95 @@ body {
     flex-direction: row;
 }
 
-.follow {
+.followed {
     color: grey;
 }
 
 .divider {
     width: 100%;
+    margin: 10px 0px;
 }
 
 .stories {
     display: flex;
     flex-direction: row;
     gap: 0.5em;
+    margin: 10px 0px;
 }
 
 .story-picture {
     width: 50px !important;
 }
+
+.preview-container {
+    display: flex;
+    flex-direction: row;
+    gap: 1em;
+    padding: 10px;
+}
+
+.username {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5em;
+}
+
+.name {
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.name h4 {
+    margin: 0;
+}
+
+.name p {
+    color: grey;
+    margin: 0;
+}
+
+.follow {
+    color: #2095F6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 30px;
+}
+
+.follow p {
+    font-size: 14px;
+}
+
+.proposal {
+    display: flex;
+    flex-direction: row;
+    gap: 5em;
+}
+
+.proposal-text {
+    color: grey;
+    font-size: 12px;
+}
+
+.proposal-view {
+    font-size: 12px;
+}
+
+.right-section-lower {
+    display: flex;
+    flex-direction: column;
+}
+
+.link-stylings {
+    font-size: 12px;
+    color: grey;
+    max-width: 300px;
+}
+
+
