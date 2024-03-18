@@ -115,6 +115,7 @@ body {
 .divider {
     width: 100%;
     margin: 10px 0px;
+    border: 0.5px solid rgba(255, 255, 255, 0.1);
 }
 
 .stories {
@@ -199,4 +200,10 @@ body {
     max-width: 300px;
 }
 
+.posting-picture img {
+    width: 500px;
+}
 
+.posting-container {
+    padding: 20px 50px;
+}
