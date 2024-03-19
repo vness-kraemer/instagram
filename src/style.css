@@ -207,3 +207,41 @@ body {
 .posting-container {
     padding: 20px 50px;
 }
+
+.posting-bar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.interactive-icons-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+}
+
+.interactive-icons {
+    width: 30px !important;
+
+}
+
+.input-field {
+    margin: 20px 0px;
+    padding: 0;
+    background-color: black;
+    color: white; 
+    border: none;
+    outline: none;
+}
+
+.d-none {
+    display: none;
+}
+
+.comment-section {
+    margin-bottom: 50px;
+}
+
+.like-button {
+    cursor: pointer;
+}

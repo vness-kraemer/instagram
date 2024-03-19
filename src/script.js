@@ -1,7 +1,7 @@
 // Create array with JSON file
 let posts = [
     {
-        'author': 'Tagesschau',
+        'author': 'Doglovers',
         'profileImage': 'img/profiles/dog.png',
         'img': 'img/postings/dogposting.jpg',
         'description': 'Chefarzt zeigt Gesicht von Baby',
@@ -33,14 +33,50 @@ function show() {
             </div>
           </div>
           <div class="posting-picture">
-          <img src="${element['img']}"
-          <div class="posting-bar>
-            <div class="active-icons">
-                <img src="/img/icons/comment.png" class="icon" />
+          <img src="${element['img']}">
+          <div class="posting-bar">
+            <div class="interactive-icons-container">
+                <img id="likeImg" class="interactive-icons like-button" src="/img/icons/like.png">
+                <img class="interactive-icons" src="/img/icons/comment.png">
+                <img class="interactive-icons" src="/img/icons/direct-message.png">
+            </div>
+            <div class="save-container">
+            <img class="interactive-icons" src="/img/icons/save.png">
             </div>
           </div>
+          </div>
+          <div class="like-text">
+            <p id="counter">Gefällt 9.145 Mal</p>
+          </div>
+          <div class="name">
+          <h4>${element['author']}</h4>
+          </div>
+          <div class="comment-section">
+            <input class="input-field" type="text" placeholder="Kommentieren...">
+            <input class="d-none" type="submit">
           </div>
           </div>
         `;
     }
+}
+
+function like() {
+    const likeButton = document.getElementById('likeImg');
+    const likeCounter = document.getElementById('counter');
+
+    let likes = 0;
+
+    likeButton.addEventListener("click", () => {
+        likes++;
+
+        likeCounter.innerHTML = likes;
+
+        likeButton.classList.toggle("active");
+    });
+}
+
+function redLikeButton() {
+    let newLike = "/img/icons/reels.png"
+
+    
 }
