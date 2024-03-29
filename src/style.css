@@ -253,4 +253,9 @@ body {
 .comments {
     display: flex;
     flex-direction: column;
+    
+}
+
+.comments p {
+    margin: 2px 0;
 }

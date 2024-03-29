@@ -1,4 +1,6 @@
-// Create array with JSON file
+// JSON file with arrays of user information, postings for instaclone and 
+// comments and likes
+
 let posts = [
     {
         'author': 'Doglovers',
@@ -6,7 +8,8 @@ let posts = [
         'img': 'img/postings/dogposting.jpg', 
         'description': 'Chefarzt zeigt Gesicht von Baby',
         'location': 'Aachen', 
-        'comments': []
+        'comments': [],
+        'likes': 24
 
     },
 
@@ -16,19 +19,23 @@ let posts = [
       'img': 'img/postings/posting2.jpg', 
       'description': 'Frohe Ostern!',
       'location': 'Hogwarts', 
-      'comments': []
+      'comments': [],
+      'likes': 89 
 
   }
 ]
 
-let likes = 84;
+
+
+// The function `show` displays a list of posts on instaclone "InstaVista"
 
 function show() {
+    load();
     let post = document.getElementById('postings');
     post.innerHTML = ``;
-
+    
     for(let i = 0; i < posts.length; i++) {
-        // create a variable to display position 'i' 
+        // Create a variable to display position 'i' 
         const element = posts[i];
         post.innerHTML += `
             <div class="posting-container-javascript">
@@ -48,72 +55,108 @@ function show() {
           <div class="posting-picture">
           <img src="${element['img']}">
           <div class="posting-bar">
-            <div class="interactive-icons-container">
-                <img onclick="like(${i});" id="likeImg" class="interactive-icons like-button" src="/img/icons/heart-line.svg">
-                <img onclick="deleteLike(${i})" id="filledImg" class="interactive-icons like-button d-none" src="/img/icons/heart-red-fill.svg">
-                <img class="interactive-icons" src="/img/icons/comment.png">
-                <img class="interactive-icons" src="/img/icons/direct-message.png">
-            </div>
-            <div class="save-container">
-            <img class="interactive-icons" src="/img/icons/save.png">
-            </div>
+          <div class="interactive-icons-container">
+              <img onclick="toggleLike(${i});" id="likeImg-${i}" class="interactive-icons like-button ${element.liked ? 'd-none' : ''}" src="./img/icons/heart-line.svg">
+              <img onclick="toggleLike(${i});" id="filledImg-${i}" class="interactive-icons like-button ${element.liked ? '' : 'd-none'}" src="./img/icons/heart-red-fill.svg">
+              <img class="interactive-icons" src="./img/icons/comment.png">
+              <img class="interactive-icons" src="./img/icons/direct-message.png">
           </div>
+          <div class="save-container">
+          <img class="interactive-icons" src="./img/icons/save.png">
           </div>
+        </div>
+        </div>
           <div class="like-text">
-            <p">Gefällt <span id="likeCount">84</span> Mal</p>
-          </div>
+          <p id="likeCount-${i}">Gefällt ${posts[i].likes} Mal</p></div>
           <div class="name">
           <h4>${element['author']}</h4>
           </div>
           <div class="comment-section">
-            <input id="inputField" class="input-field" type="text" placeholder="Kommentieren...">
-            <input onclick="addComment()" type="submit">
+          <form id="commentForm-${i}">
+            <input id="inputField-${i}" class="input-field" type="text" placeholder="Kommentieren...">
+            <input onclick="addComment(${i})" type="submit" class="d-none">
+            </form>
           </div>
-          <div class="comments">${element.comments[i]}</div>
-          </div>
+          <div class="comments">
+          ${element.comments.map(comment => `<p>${comment}</p>`).join('')}
+        </div>
         `;
+
+      addEnterKeyListener(i);
+       
     }
 }
 
-function like() {
-    const likeButton = document.getElementById('likeImg');
-    const filledButton = document.getElementById('filledImg');
-    const likeCounter = document.getElementById('likeCount');
 
-   likes++;
-   likeCounter.innerHTML = likes;
 
-   likeButton.classList.add('d-none');
-   filledButton.classList.remove('d-none');
-    
-}
+// The function `toggleLike` toggles the like status of a post and updates the like count and button 
+// if the status changed by clicking on it
 
-function deleteLike() {
-  const likeButton = document.getElementById('likeImg');
-  const filledButton = document.getElementById('filledImg');
-  const likeCounter = document.getElementById('likeCount');
+function toggleLike(i) {
+  const likeButton = document.getElementById(`likeImg-${i}`);
+  const filledButton = document.getElementById(`filledImg-${i}`);
+  const likeCounter = document.getElementById(`likeCount-${i}`); 
 
- likes--;
- likeCounter.innerHTML = likes;
+  if (posts[i].liked) {
+      posts[i].likes--;
+      likeCounter.innerHTML = posts[i].likes;
+      likeButton.classList.remove('d-none');
+      filledButton.classList.add('d-none');
+  } else {
+      posts[i].likes++;
+      likeCounter.innerHTML = posts[i].likes;
+      likeButton.classList.add('d-none');
+      filledButton.classList.remove('d-none');
+  }
 
- likeButton.classList.remove('d-none');
- filledButton.classList.add('d-none');
+  posts[i].liked = !posts[i].liked;
+
+  save();
   
 }
 
 
-function addComment() {
-    let commentInput = document.getElementById('inputField');
-    // let commentText = commentInput.value.trim();
 
-   posts[0]['comments'].push(commentInput.value);
+// Create function to add comments 
+function addComment(i) {
+  let commentInput = document.getElementById(`inputField-${i}`);
+  let commentText = commentInput.value.trim();
 
-   save();
-   show();
+  if (commentText !== "") {
+      posts[i].comments.push(commentText);
+     
+  }
+
+  save();
+  show();
+  
+}
+
+
+function addEnterKeyListener(index) {
+  document.getElementById(`commentForm-${index}`).addEventListener('keydown', function(event) {
+      if (event.key === 'Enter') {
+          addComment(index);
+      }
+  });
+
+  save();
 
 }
 
+
+// Save it to localStorage
 function save() {
-  let postsAsText = JSON.stringify(posts['comments']);
+  let postsAsText = JSON.stringify(posts);
   localStorage.setItem('posts', postsAsText);
 }
+
+// Load JSON file from localStorage
+function load() {
+  let postsAsText = localStorage.getItem(posts);
+
+  if(postsAsText) {
+    posts = JSON.parse(postsAsText);
+  }
+}
+
