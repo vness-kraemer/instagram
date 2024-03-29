@@ -22,7 +22,19 @@ let posts = [
       'comments': [],
       'likes': 89 
 
-  }
+  },
+
+  {
+    'author': 'James Bond',
+    'profileImage': 'img/profiles/man-3.png',
+    'img': 'img/postings/posting3.jpg', 
+    'description': 'Trip nach Berlin!',
+    'location': 'Berlin', 
+    'comments': [],
+    'likes': 1005 
+
+}
+
 ]
 
 
@@ -160,3 +172,4 @@ function load() {
   }
 }
 
+show();
