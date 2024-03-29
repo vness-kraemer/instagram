@@ -245,3 +245,12 @@ body {
 .like-button {
     cursor: pointer;
 }
+
+.like-text {
+    margin: 10px 0px;
+}
+
+.comments {
+    display: flex;
+    flex-direction: column;
+}
