@@ -165,7 +165,7 @@ function save() {
 
 // Load JSON file from localStorage
 function load() {
-  let postsAsText = localStorage.getItem(posts);
+  let postsAsText = localStorage.getItem('posts');
 
   if(postsAsText) {
     posts = JSON.parse(postsAsText);

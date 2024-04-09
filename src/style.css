@@ -332,3 +332,53 @@ body {
         display: flex;
     }
 }
+
+
+@media screen and (max-width: 620px) {
+    
+    .home-icon {
+        width: 30px !important;
+    }
+
+}
+
+@media screen and (max-width: 590px) {
+    
+    .posting-container {
+        padding: 20px 20px;
+    }
+
+    .posting-picture img {
+        width: 300px;
+    }
+
+    .posting-bar {
+        width: 300px;
+    }
+
+    .profile-picture {
+        width: 30px !important;
+    }
+}
+
+@media screen and (max-width: 390px) {
+    .stories {
+        gap: 1px;
+    }
+
+    .posting-picture img {
+        width: 200px;
+    }
+
+    .posting-bar {
+        width: 200px;
+    }
+
+    .interactive-icons {
+        width: 20px !important;
+    }
+
+    .profile-picture {
+        width: 25px !important;
+    }
+}
