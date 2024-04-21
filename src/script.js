@@ -49,7 +49,15 @@ function show() {
     for(let i = 0; i < posts.length; i++) {
         // Create a variable to display position 'i' 
         const element = posts[i];
-        post.innerHTML += `
+        post.innerHTML += postTemplate(element, i);
+
+      addEnterKeyListener(i);
+       
+    }
+}
+
+function postTemplate(element, i) {
+  return `
             <div class="posting-container-javascript">
             <hr class="divider">
             <div class="preview-container">
@@ -79,7 +87,8 @@ function show() {
         </div>
         </div>
           <div class="like-text">
-          <p id="likeCount-${i}">Gefällt ${posts[i].likes} Mal</p></div>
+          Gefällt <span id="likeCount-${i}">${posts[i].likes}</span> Mal
+          </div>
           <div class="name">
           <h4>${element['author']}</h4>
           </div>
@@ -94,11 +103,7 @@ function show() {
         </div>
         `;
 
-      addEnterKeyListener(i);
-       
-    }
 }
-
 
 
 // The function `toggleLike` toggles the like status of a post and updates the like count and button 

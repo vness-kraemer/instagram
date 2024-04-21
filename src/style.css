@@ -337,7 +337,15 @@ body {
 @media screen and (max-width: 620px) {
     
     .home-icon {
-        width: 30px !important;
+        width: 40px !important;
+    }
+
+    .mobile-sidebar {
+        width: 550px;
+    }
+
+    .main-content {
+        padding: 20px 0px;
     }
 
 }
@@ -359,6 +367,20 @@ body {
     .profile-picture {
         width: 30px !important;
     }
+
+    .main-content {
+        padding: 20px 5px;
+    }
+
+    .mobile-sidebar {
+        width: 300px;
+    }
+
+    .posting-container {
+        padding: 5px;
+        justify-content: center;
+        align-items: center;
+    }
 }
 
 @media screen and (max-width: 390px) {
@@ -367,11 +389,11 @@ body {
     }
 
     .posting-picture img {
-        width: 200px;
+        width: 300px;
     }
 
     .posting-bar {
-        width: 200px;
+        width: 300px;
     }
 
     .interactive-icons {
